@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MoviesService } from '../movies.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent implements OnInit, OnDestroy {
+
+  movies:[];
+  subscription: Subscription;
 
   constructor(private moviesService: MoviesService) { }
-
+  
   ngOnInit(): void {
-    this.moviesService.getPopularMovies().subscribe( response => {
-      console.log(response)
+    this.subscription = this.moviesService.getPopularMovies().subscribe( (movies:any) => {
+      this.movies = movies;
     } )
+  }
+  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
