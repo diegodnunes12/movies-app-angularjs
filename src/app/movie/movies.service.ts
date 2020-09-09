@@ -12,7 +12,7 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   private withBaseUrl(path: string){
-    return `https://api.themoviedb.org/3/${path}?api_key=${this.API_KEY}`
+    return `https://api.themoviedb.org/3/${path}?api_key=${this.API_KEY}&language=pt-BR`
   }
 
   getPopularMovies(){
