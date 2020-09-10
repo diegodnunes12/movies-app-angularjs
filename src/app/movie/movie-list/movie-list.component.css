@@ -1,0 +1,16 @@
+#movies-list{
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.img-poster{
+    width: 150px;
+    height: 225px;
+}
+
+h3{
+    color:#f5f5f5;
+    font-size: 1em;
+    height: 45px;
+}
