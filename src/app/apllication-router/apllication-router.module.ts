@@ -4,6 +4,7 @@ import { RouterModule, Route } from '@angular/router';
 import { HomeComponent } from '../shared/home/home.component';
 import { AboutComponent } from '../shared/about/about.component';
 import { MovieDetailComponent } from '../movie/movie-detail/movie-detail.component';
+import { MovieListComponent } from '../movie/movie-list/movie-list.component';
 
 const routes: Route[] = [
   {
@@ -13,7 +14,10 @@ const routes: Route[] = [
     path: 'about', component: AboutComponent
   },
   {
-    path: 'movie/:title', component: MovieDetailComponent
+    path: 'movies', component: MovieListComponent
+  },
+  {
+    path: 'movie/:id', component: MovieDetailComponent
   }
 ];
 

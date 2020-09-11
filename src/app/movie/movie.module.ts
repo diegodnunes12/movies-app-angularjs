@@ -5,7 +5,7 @@ import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
-const moviesRoutes: Route[] = [
+/* const moviesRoutes: Route[] = [
   {
     path: 'movies', 
     component: MovieListComponent,
@@ -24,6 +24,23 @@ const moviesRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(moviesRoutes)
+  ],
+  exports: [RouterModule]
+})
+export class MovieModule { } */
+
+const moviesRoutes: Route[] = [
+  {    
+      path: 'movies/:id', component: MovieDetailComponent    
+  }
+];
+
+
+@NgModule({
+  declarations: [MovieItemComponent, MovieDetailComponent, MovieListComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(moviesRoutes)
   ],
   exports: [RouterModule]
 })
