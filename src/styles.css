@@ -7,3 +7,36 @@ body{
 a{
     text-decoration: none;
 }
+
+main{
+    font-family: 'Source Sans Pro', Tahoma, Verdana, sans-serif;
+}
+
+.container{
+    width: 100%;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+ul li{
+    display: inline;
+    padding:0 10px;
+}
+
+@media only screen and (min-width: 768px) {
+    .container{
+        width: 80%;
+        margin:0 auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .container{
+        width: 70%;
+        margin:0 auto;
+    }
+}
