@@ -1,24 +1,34 @@
 <div style="background-image: linear-gradient(#333, #333), url(https://image.tmdb.org/t/p/original{{movieDetail.backdrop_path}});" class="bg-image">
     <div class="container">
 
-        <div class="col-md-4">
-            <img src="https://image.tmdb.org/t/p/w500{{movieDetail.poster_path}}" class="img-poster-detail"/>
+        <div class="row pt-5 pb-5   ">
+            <div class="col-md-4">
+                <img src="https://image.tmdb.org/t/p/w500{{movieDetail.poster_path}}" class="img-poster-detail"/>
+            </div>
+            <div class="col-md-6">
+                <h1>
+                    {{movieDetail.title}}
+                </h1>
+                <p>
+                    {{movieDetail.release_date}}
+                    &bull;
+                </p>
+                <h4>Sinopse</h4>
+                <p>
+                    {{movieDetail.overview}}
+                </p>
+                <h4>Generos</h4>
+                <ul>
+                    <li *ngFor="let genre of movieDetail.genres">
+                        {{genre.name}}
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="col-md-6">
-            <h1>
-                {{movieDetail.title}}
-            </h1>
-            <p>
-                {{movieDetail.overview}}
-            </p>
-            <h4>Generos</h4>
-            <ul>
-                <li *ngFor="let genre of movieDetail.genres">
-                    {{genre.name}}
-                </li>
-            </ul>
-        </div>
+        
+
+        
 
         <div class="clear"></div>
     </div>
