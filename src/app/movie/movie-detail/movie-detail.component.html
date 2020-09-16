@@ -10,8 +10,9 @@
                     {{movieDetail.title}}
                 </h1>
                 <p>
-                    {{movieDetail.release_date}}
+                    {{ movieDetail.release_date | date: 'dd/MM/yyyy' }}
                     &bull;
+                    {{duration}}                
                 </p>
                 <h4>Sinopse</h4>
                 <p>

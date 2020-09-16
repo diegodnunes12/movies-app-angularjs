@@ -11,6 +11,7 @@ export class MovieDetailComponent implements OnInit {
 
   movieId: any;
   movieDetail: any = {};
+  duration: string;
 
   constructor(private router: ActivatedRoute, private moviesService: MoviesService) { }
 
@@ -22,11 +23,10 @@ export class MovieDetailComponent implements OnInit {
       this.moviesService.getMovie(this.movieId)
         .subscribe( (movieDetail: any) => {
           this.movieDetail = movieDetail;
+          this.duration = this.moviesService.getFormatedHour(movieDetail.runtime);
         } );
 
     } );
-
-    
+   
   }
-
 }

@@ -26,4 +26,14 @@ export class MoviesService {
     return this.http.get(this.withBaseUrl(`movie/${id}`));
   }
 
+  getFormatedHour(minutesTotal: number){
+    let seconds = minutesTotal * 60;
+    let days = Math.floor(seconds / 86400);
+    seconds -= days * 86400;
+    let hours = Math.floor(seconds / 3600) % 24;
+    seconds -= hours * 3600;
+    let minutes = Math.floor(seconds / 60) % 60;
+    return hours + "h " + minutes + "m ";
+  }
+
 }
