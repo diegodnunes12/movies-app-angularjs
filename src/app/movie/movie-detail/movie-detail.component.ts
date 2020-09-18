@@ -12,6 +12,7 @@ export class MovieDetailComponent implements OnInit {
   movieId: any;
   movieDetail: any = {};
   duration: string;
+  voteAverage: any;
 
   constructor(private router: ActivatedRoute, private moviesService: MoviesService) { }
 
