@@ -5,7 +5,7 @@
             <div class="col-md-4">
                 <img src="https://image.tmdb.org/t/p/w500{{movieDetail.poster_path}}" class="img-poster-detail"/>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pt-4">
                 <h1>
                     {{movieDetail.title}}
                 </h1>
@@ -14,21 +14,18 @@
                     &bull;
                     {{duration}}                
                 </p>
-                <div>
-                    <div class="container-media">
-                        {{movieDetail.vote_average}}
-                    </div>
-                </div>
-                <h4>Sinopse</h4>
-                <p>
-                    {{movieDetail.overview}}
-                </p>
-                <h4>Generos</h4>
-                <ul>
+                <ul class="list-genre">
                     <li *ngFor="let genre of movieDetail.genres">
                         {{genre.name}}
                     </li>
                 </ul>
+                <div class="container-media">
+                    <span>{{movieDetail.vote_average}}</span> % &bull; {{movieDetail.vote_count}} Votos
+                </div>
+                <h4 class="mt-5">Sinopse</h4>
+                <p>
+                    {{movieDetail.overview}}
+                </p>                
             </div>
         </div>
 
