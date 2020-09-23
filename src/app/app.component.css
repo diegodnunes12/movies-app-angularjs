@@ -1,5 +1,7 @@
 nav{
-    background-color: #111;
+    background-color: #111;    
+}
+nav a{
     color:#fff;
 }
 footer{
