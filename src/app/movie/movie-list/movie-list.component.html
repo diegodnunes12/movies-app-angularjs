@@ -13,11 +13,12 @@
                             <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="img-poster card-img-top" alt=""/>
                             <div class="card-body">
                               <h5 class="card-title">{{movie.title}}</h5>
-                              {{movie.vote_average}} %
+                              <span class="badge badge-pill badge-warning">{{movie.vote_average}} %</span>
                             </div>
                         </div>
                     </a>
                 </div>
+            <!-- <button ng-click="onClickPagination(2)">teste</button> -->
             </div>
         </div>
     </div>

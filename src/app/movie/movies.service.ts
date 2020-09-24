@@ -36,4 +36,8 @@ export class MoviesService {
     return hours + "h " + minutes + "m ";
   }
 
+  getPagination(page: number){
+    console.log('paginou');
+  }
+
 }

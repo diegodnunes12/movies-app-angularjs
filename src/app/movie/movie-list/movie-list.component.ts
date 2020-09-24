@@ -17,12 +17,16 @@ export class MovieListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {     
     this.subscription = this.moviesService.getPopularMovies().subscribe( (movies:any) => {
       this.movies = movies;
-      console.log(movies);
     } )
   }
   
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  onClickPagination(page):void{
+    console.log('a');
+    this.moviesService.getPagination(page);
   }
 
 }
