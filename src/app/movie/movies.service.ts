@@ -22,6 +22,13 @@ export class MoviesService {
     );
   }
 
+  getPopularMovies2(){
+    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.API_KEY}&language=pt-BR&page=2`)
+    .pipe(
+      map((response:any) => response.results)
+    );
+  }
+
   getMovie(id: string){
     return this.http.get(this.withBaseUrl(`movie/${id}`));
   }
@@ -35,9 +42,4 @@ export class MoviesService {
     let minutes = Math.floor(seconds / 60) % 60;
     return hours + "h " + minutes + "m ";
   }
-
-  getPagination(page: number){
-    console.log('paginou');
-  }
-
 }

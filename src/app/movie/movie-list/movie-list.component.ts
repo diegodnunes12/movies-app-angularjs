@@ -11,6 +11,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
 
   movies:[];
   subscription: Subscription;
+  clickMessage: string;
 
   constructor(private moviesService: MoviesService) { }
   
@@ -24,9 +25,12 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onClickPagination(page):void{
-    console.log('a');
-    this.moviesService.getPagination(page);
+  onClickMe() {
+    this.subscription = this.moviesService.getPopularMovies2().subscribe( (movies:any) => {
+      var arrayC= this.movies.concat(movies);
+      //this.movies = arrayC;
+    } )
+    this.clickMessage = 'You are my hero!';
   }
 
 }
