@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (scroll)="onScroll($event)">
     <h1>Filmes Populares</h1>
 
     <div class="row">
@@ -19,10 +19,10 @@
                     </a>
                 </div>
                 <button (click)="onClickMe()">Click me!</button>
-    {{clickMessage}}
+                {{clickMessage}}
             </div>
         </div>
     </div>
-
     <router-outlet></router-outlet>
+    
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Subscription } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css']
 })
+
 export class MovieListComponent implements OnInit, OnDestroy {
 
   movies:[];
@@ -15,7 +16,8 @@ export class MovieListComponent implements OnInit, OnDestroy {
 
   constructor(private moviesService: MoviesService) { }
   
-  ngOnInit(): void {     
+  ngOnInit(): void {   
+    window.addEventListener('scroll', this.onScroll, true)  
     this.subscription = this.moviesService.getPopularMovies().subscribe( (movies:any) => {
       this.movies = movies;
     } )
@@ -32,5 +34,28 @@ export class MovieListComponent implements OnInit, OnDestroy {
     } )
     this.clickMessage = 'You are my hero!';
   }
+
+  @HostListener('scroll', ['$event'])
+  onScroll(event: any) {
+    console.log(event);
+    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+      console.log("End");
+    }
+  }
+/*   onScroll=(s)=>{
+    let raw = document.getElementById('teste');
+    //console.log(a);
+    console.log(s.target.offsetHeight)
+    console.log(s.target.scrollTop)
+    console.log(s.target.scrollHeight);
+
+    if (s.target.offsetHeight + s.target.scrollTop >= s.target.scrollHeight) {
+      console.log("End");
+    }
+
+    //let sc = s.target.scrollingElement.scrollTop;
+    //console.log("teste", sc);
+    
+  } */
 
 }
