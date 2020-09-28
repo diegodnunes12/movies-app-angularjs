@@ -10,9 +10,10 @@ import { Subscription } from 'rxjs';
 
 export class MovieListComponent implements OnInit, OnDestroy {
 
-  movies:[];
+  movies:never[];
   subscription: Subscription;
   clickMessage: string;
+  arrayC: never[];
 
   constructor(private moviesService: MoviesService) { }
   
@@ -29,8 +30,10 @@ export class MovieListComponent implements OnInit, OnDestroy {
 
   onClickMe() {
     this.subscription = this.moviesService.getPopularMovies2().subscribe( (movies:any) => {
-      var arrayC= this.movies.concat(movies);
-      //this.movies = arrayC;
+      //this.movies = movies;
+      this.arrayC = this.movies.concat(movies);
+      this.movies = this.arrayC;
+      console.log(this.movies)
     } )
     this.clickMessage = 'You are my hero!';
   }
