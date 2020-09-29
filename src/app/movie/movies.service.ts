@@ -22,8 +22,8 @@ export class MoviesService {
     );
   }
 
-  getPopularMovies2(){
-    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.API_KEY}&language=pt-BR&page=2`)
+  getPopularMoviesPage(page: number){
+    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.API_KEY}&language=pt-BR&page=${page}`)
     .pipe(
       map((response:any) => response.results)
     );

@@ -14,6 +14,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   clickMessage: string;
   arrayC: never[];
+  pageAtual: number;
 
   constructor(private moviesService: MoviesService) { }
   
@@ -21,6 +22,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
     window.addEventListener('scroll', this.onScroll, true)  
     this.subscription = this.moviesService.getPopularMovies().subscribe( (movies:any) => {
       this.movies = movies;
+      this.pageAtual = 1;
     } )
   }
   
@@ -28,14 +30,13 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onClickMe() {
-    this.subscription = this.moviesService.getPopularMovies2().subscribe( (movies:any) => {
-      //this.movies = movies;
+  onClickMe(pageAtual: number) {
+    this.pageAtual = pageAtual + 1;
+    this.subscription = this.moviesService.getPopularMoviesPage(this.pageAtual).subscribe( (movies:any) => {
       this.arrayC = this.movies.concat(movies);
       this.movies = this.arrayC;
-      console.log(this.movies)
+      console.log(this.pageAtual)
     } )
-    this.clickMessage = 'You are my hero!';
   }
 
   @HostListener('scroll', ['$event'])
