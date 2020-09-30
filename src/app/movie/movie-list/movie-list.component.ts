@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Subscription } from 'rxjs';
 
@@ -15,6 +15,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
   clickMessage: string;
   arrayC: never[];
   pageAtual: number;
+  @ViewChild('scroll', { read: ElementRef }) public scroll: ElementRef<any>;
 
   constructor(private moviesService: MoviesService) { }
   
@@ -30,20 +31,22 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onClickMe(pageAtual: number) {
+  onClickMe(pageAtual: number, event: any) {
     this.pageAtual = pageAtual + 1;
     this.subscription = this.moviesService.getPopularMoviesPage(this.pageAtual).subscribe( (movies:any) => {
       this.arrayC = this.movies.concat(movies);
       this.movies = this.arrayC;
-      console.log(this.pageAtual)
+      //console.log(this.pageAtual)
+      console.log(event);
+      window.scroll(0, (event.pageY - event.screenY));
     } )
   }
 
   @HostListener('scroll', ['$event'])
   onScroll(event: any) {
-    console.log(event);
+    //console.log(event);
     if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
-      console.log("End");
+      //console.log("End");
     }
   }
 /*   onScroll=(s)=>{
