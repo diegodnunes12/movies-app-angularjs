@@ -35,10 +35,8 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.pageAtual = pageAtual + 1;
     this.subscription = this.moviesService.getPopularMoviesPage(this.pageAtual).subscribe( (movies:any) => {
       this.arrayC = this.movies.concat(movies);
-      this.movies = this.arrayC;
-      //console.log(this.pageAtual)
-      console.log(event);
-      window.scroll(0, (event.pageY - event.screenY));
+      this.movies = this.arrayC;   
+      window.scroll(0, (event.pageY - screen.height));
     } )
   }
 
